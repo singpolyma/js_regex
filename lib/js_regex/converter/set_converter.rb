@@ -28,11 +28,7 @@ class JsRegex
           warn_of_unsupported_feature('nested case-sensitive set')
         end
 
-        if Converter.in_surrogate_pair_limit? { content.astral_part.size }
-          content.to_s_with_surrogate_alternation
-        else
-          limit_to_bmp_part_with_warning(content)
-        end
+        content.to_s_with_surrogate_ranges
       end
 
       def directly_compatible?

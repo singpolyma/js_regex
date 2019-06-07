@@ -28,6 +28,6 @@ class JsRegex
   end
 
   def to_s
-    "/#{source.empty? ? '(?:)' : source}/#{options}"
+    "/#{source.empty? ? '(?:)' : source.gsub(/\\\//, "\\x2F").gsub(/\//, "\\x2F")}/#{options}"
   end
 end
